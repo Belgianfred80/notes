@@ -29,10 +29,11 @@
   var REPO_URL = "https://github.com/" + CONFIG.owner + "/" + CONFIG.repo;
 
   var CSS = [
-    ".gn-panel{box-sizing:border-box;height:100%;font-family:Arial,Helvetica,sans-serif;color:#222}",
+    ".gn-panel{position:relative;box-sizing:border-box;height:100%;font-family:Arial,Helvetica,sans-serif;color:#222}",
     ".gn-box{box-sizing:border-box;height:100%;overflow:auto;background:#fff;border:1px solid #c5cad0;",
     "border-radius:8px;padding:8px 12px}",
     ".gn-btns{float:right;position:relative;z-index:2;display:flex;gap:5px;margin:0 0 6px 10px}",
+    ".gn-panel .gn-btns.gn-btns-out{float:none;position:absolute;right:0;margin:0}",
     ".gn-panel a.gn-btn,.gn-panel a.gn-btn:link,.gn-panel a.gn-btn:visited,.gn-panel a.gn-btn:hover{",
     "display:inline-block;font:700 10px/1 Arial,Helvetica,sans-serif;padding:5px 9px;",
     "border-radius:6px;color:#fff !important;text-decoration:none !important;text-transform:uppercase;cursor:pointer;",
@@ -97,10 +98,16 @@
     if (editor) {
       btns += '<a class="gn-btn gn-btn-edit" href="' + escapeHtml(editor) + '" target="_blank" rel="noopener">\u00c9dition</a>';
     }
+    var topAttr = el.getAttribute("data-buttons-top");
+    var out = topAttr !== null && topAttr !== "" && !isNaN(parseFloat(topAttr));
+    var btnsHtml = out
+      ? '<span class="gn-btns gn-btns-out" style="top:' + parseFloat(topAttr) + 'px">' + btns + '</span>'
+      : '<span class="gn-btns">' + btns + '</span>';
     el.innerHTML =
       '<div class="gn-panel">' +
+        (out ? btnsHtml : '') +
         '<div class="gn-box">' +
-          '<span class="gn-btns">' + btns + '</span>' +
+          (out ? '' : btnsHtml) +
           '<ul class="gn-list"><li class="gn-empty">Chargement\u2026</li></ul>' +
           '<div class="gn-status"></div>' +
         '</div>' +
