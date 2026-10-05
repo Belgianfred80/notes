@@ -32,7 +32,7 @@
     ".gn-panel{box-sizing:border-box;height:100%;font-family:Arial,Helvetica,sans-serif;color:#222}",
     ".gn-box{box-sizing:border-box;height:100%;overflow:auto;background:#fff;border:1px solid #c5cad0;",
     "border-radius:8px;padding:8px 12px}",
-    ".gn-btns{float:right;display:flex;gap:5px;margin:0 0 6px 10px}",
+    ".gn-btns{float:right;position:relative;z-index:2;display:flex;gap:5px;margin:0 0 6px 10px}",
     ".gn-panel a.gn-btn,.gn-panel a.gn-btn:link,.gn-panel a.gn-btn:visited,.gn-panel a.gn-btn:hover{",
     "display:inline-block;font:700 10px/1 Arial,Helvetica,sans-serif;padding:5px 9px;",
     "border-radius:6px;color:#fff !important;text-decoration:none !important;text-transform:uppercase;cursor:pointer;",
@@ -41,11 +41,11 @@
     ".gn-panel a.gn-btn-github{background:#3a3f45 !important}",
     ".gn-panel a.gn-btn-edit{background:#2e8b1e !important}",
     ".gn-list{list-style:none;margin:0;padding:0}",
-    ".gn-list li{font-size:13px;line-height:1.4;margin:3px 0;padding-left:12px;position:relative;",
+    ".gn-list li{font-size:12px;line-height:1.4;margin:2px 0;padding-left:11px;position:relative;",
     "white-space:pre-wrap;word-wrap:break-word}",
     ".gn-list li::before{content:'-';position:absolute;left:0}",
     ".gn-list a{color:#1565c0}",
-    ".gn-empty{font-size:12px;color:#888;font-style:italic}",
+    ".gn-empty{font-size:11px;color:#888;font-style:italic}",
     ".gn-status{font-size:11px;color:#a33;margin-top:5px}",
     ".gn-status:empty{display:none}"
   ].join("");
