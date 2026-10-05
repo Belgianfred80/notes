@@ -1,14 +1,13 @@
 /* ==========================================================================
-   MODULE NOTES — affiche les notes partagées stockées sur GitHub
+   MODULE NOTES \u2014 affiche les notes partag\u00e9es stock\u00e9es sur GitHub
    --------------------------------------------------------------------------
-   Intégration dans une page HTML (2 lignes) :
+   Int\u00e9gration dans une page HTML (2 lignes) :
 
      <div data-notes-module data-editor="notes-editor.html"></div>
-     <script src="https://VOTRE_UTILISATEUR.github.io/notes/notes-module.js"></script>
+     <script src="https://Belgianfred80.github.io/notes/notes-module.js"></script>
 
    Attributs possibles sur le bloc :
-     data-editor  : lien de la page d'édition (si absent, pas de bouton "Édition")
-     data-title   : titre du panneau (par défaut "Notes partagées")
+     data-editor  : lien de la page d'\u00e9dition (si absent, pas de bouton "\u00c9dition")
    ========================================================================== */
 (function () {
   "use strict";
@@ -30,27 +29,24 @@
   var REPO_URL = "https://github.com/" + CONFIG.owner + "/" + CONFIG.repo;
 
   var CSS = [
-    ".gn-panel{box-sizing:border-box;height:100%;display:flex;flex-direction:column;",
-    "background:#e3e6ea;border:1px solid #c5cad0;border-radius:10px;padding:10px 12px;",
-    "font-family:Arial,Helvetica,sans-serif;color:#222}",
-    ".gn-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}",
-    ".gn-title{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:#555}",
-    ".gn-btns{display:flex;gap:5px}",
-    ".gn-btn{display:inline-block;font:700 10px/1 Arial,Helvetica,sans-serif;padding:5px 9px;",
-    "border-radius:6px;color:#fff;text-decoration:none;text-transform:uppercase;cursor:pointer;",
-    "border:1px solid rgba(0,0,0,.35);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 1px 2px rgba(0,0,0,.25)}",
-    ".gn-btn:hover{filter:brightness(1.12)}",
-    ".gn-btn-github{background:#3a3f45}",
-    ".gn-btn-edit{background:#2e8b1e}",
-    ".gn-box{flex:1;min-height:40px;overflow:auto;background:#fff;border:1px solid #c5cad0;",
+    ".gn-panel{box-sizing:border-box;height:100%;font-family:Arial,Helvetica,sans-serif;color:#222}",
+    ".gn-box{box-sizing:border-box;height:100%;overflow:auto;background:#fff;border:1px solid #c5cad0;",
     "border-radius:8px;padding:8px 12px}",
+    ".gn-btns{float:right;display:flex;gap:5px;margin:0 0 6px 10px}",
+    ".gn-panel a.gn-btn,.gn-panel a.gn-btn:link,.gn-panel a.gn-btn:visited,.gn-panel a.gn-btn:hover{",
+    "display:inline-block;font:700 10px/1 Arial,Helvetica,sans-serif;padding:5px 9px;",
+    "border-radius:6px;color:#fff !important;text-decoration:none !important;text-transform:uppercase;cursor:pointer;",
+    "border:1px solid rgba(0,0,0,.35);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 1px 2px rgba(0,0,0,.25)}",
+    ".gn-panel a.gn-btn:hover{filter:brightness(1.12)}",
+    ".gn-panel a.gn-btn-github{background:#3a3f45 !important}",
+    ".gn-panel a.gn-btn-edit{background:#2e8b1e !important}",
     ".gn-list{list-style:none;margin:0;padding:0}",
-    ".gn-list li{font-size:13px;line-height:1.45;margin:3px 0;padding-left:12px;position:relative;",
+    ".gn-list li{font-size:15px;line-height:1.45;margin:4px 0;padding-left:14px;position:relative;",
     "white-space:pre-wrap;word-wrap:break-word}",
     ".gn-list li::before{content:'-';position:absolute;left:0}",
     ".gn-list a{color:#1565c0}",
-    ".gn-empty{font-size:12px;color:#888;font-style:italic}",
-    ".gn-status{font-size:10px;color:#a33;margin-top:5px;min-height:0}",
+    ".gn-empty{font-size:13px;color:#888;font-style:italic}",
+    ".gn-status{font-size:11px;color:#a33;margin-top:5px}",
     ".gn-status:empty{display:none}"
   ].join("");
 
@@ -96,18 +92,18 @@
   }
 
   function buildPanel(el) {
-    var title = el.getAttribute("data-title") || "Notes partagées";
     var editor = el.getAttribute("data-editor");
     var btns = '<a class="gn-btn gn-btn-github" href="' + REPO_URL + '" target="_blank" rel="noopener">GitHub</a>';
     if (editor) {
-      btns += '<a class="gn-btn gn-btn-edit" href="' + escapeHtml(editor) + '" target="_blank" rel="noopener">Édition</a>';
+      btns += '<a class="gn-btn gn-btn-edit" href="' + escapeHtml(editor) + '" target="_blank" rel="noopener">\u00c9dition</a>';
     }
     el.innerHTML =
       '<div class="gn-panel">' +
-        '<div class="gn-head"><span class="gn-title">' + escapeHtml(title) + '</span>' +
-        '<span class="gn-btns">' + btns + '</span></div>' +
-        '<div class="gn-box"><ul class="gn-list"><li class="gn-empty">Chargement…</li></ul></div>' +
-        '<div class="gn-status"></div>' +
+        '<div class="gn-box">' +
+          '<span class="gn-btns">' + btns + '</span>' +
+          '<ul class="gn-list"><li class="gn-empty">Chargement\u2026</li></ul>' +
+          '<div class="gn-status"></div>' +
+        '</div>' +
       '</div>';
   }
 
@@ -132,7 +128,7 @@
       })
       .catch(function () {
         els.forEach(function (el) {
-          el.querySelector(".gn-status").textContent = "Mise à jour des notes impossible pour le moment.";
+          el.querySelector(".gn-status").textContent = "Mise \u00e0 jour des notes impossible pour le moment.";
         });
       });
   }
