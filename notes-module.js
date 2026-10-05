@@ -41,11 +41,11 @@
     ".gn-panel a.gn-btn-github{background:#3a3f45 !important}",
     ".gn-panel a.gn-btn-edit{background:#2e8b1e !important}",
     ".gn-list{list-style:none;margin:0;padding:0}",
-    ".gn-list li{font-size:15px;line-height:1.45;margin:4px 0;padding-left:14px;position:relative;",
+    ".gn-list li{font-size:13px;line-height:1.4;margin:3px 0;padding-left:12px;position:relative;",
     "white-space:pre-wrap;word-wrap:break-word}",
     ".gn-list li::before{content:'-';position:absolute;left:0}",
     ".gn-list a{color:#1565c0}",
-    ".gn-empty{font-size:13px;color:#888;font-style:italic}",
+    ".gn-empty{font-size:12px;color:#888;font-style:italic}",
     ".gn-status{font-size:11px;color:#a33;margin-top:5px}",
     ".gn-status:empty{display:none}"
   ].join("");
